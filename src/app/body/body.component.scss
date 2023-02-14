@@ -1,0 +1,46 @@
+.container {
+    width: 100%;
+    display: flex;
+}
+.container1 {
+    width:40%
+}
+.container2 {
+    width:70%
+}
+input {
+    display: block;
+}
+.fletch {
+    display: inline;
+    margin-right: 20px;
+    background-color: rgb(10, 109, 10);
+    color: white;
+    border: none;
+    padding: 7px;
+
+}
+.clear {
+    display: inline;
+    margin-right: 20px;
+    background-color: orange;
+    border: none;
+    padding: 7px;
+}
+.myClass1 {
+    background-color: rgb(243, 243, 10);
+    padding: 7px;
+}
+.myClass2 {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 7px;
+}
+.table {
+    background-color: black;
+    color: white;
+}
+td, th {
+    text-align: center;
+}

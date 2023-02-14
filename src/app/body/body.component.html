@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="container1">
+        <h2>Create products</h2>
+        <form #productsForm="ngForm" (ngSubmit)="onProductCreate(productsForm.value)">
+            <label>Product name </label>
+            <input type="text" name="pName" ngModel>
+            <label>Product Descreption </label>
+            <input type="text" name="desc" ngModel>
+            <label>Product Price </label>
+            <input type="text" name="price" ngModel>
+            <label>Product Date </label>
+            <input type="date" name="date" ngModel>
+            <br>
+            <input [ngClass]="editMode == true ? 'myClass1' :'myClass2'" class="submit" type="submit"
+                value="{{editMode  ? 'Update Product' : 'Add Product'}}">
+        </form>
+    </div>
+    <div class="container2">
+        <table>
+            <tr class="table">
+                <td>Slno</td>
+                <td>Product Name</td>
+                <td>Product Descreption</td>
+                <td>Price</td>
+                <td>Date</td>
+                <td colspan="2">Action</td>
+            </tr>
+            <tr *ngIf="allProducts.length < 1 && !isFetching">
+                <td colspan="5" style="background-color: rgb(215, 175, 175); height:100px"><b>No Products
+                        Available!!</b> </td>
+            </tr>
+
+            <tr class="spinner-border text-danger" role="status" *ngIf="isFetching">
+                <td class="sr-only" style="text-align:center">Loading.....</td>
+            </tr>
+            <tr *ngFor="let Products of allProducts; index as i">
+                <td class="data">{{ i +1 }}</td>
+                <td class="data">{{Products.pName}}</td>
+                <td class="data">{{Products.desc}}</td>
+                <td class="data">{{Products.price}}</td>
+                <td class="data">{{Products.date}}</td>
+                <div>
+                    <td class="data1"><button
+                            style="background-color:red ;margin-left:10px; border :0px; color : white; width:60px; border-radius : 5px"
+                            (click)="onDeleteProduct(Products.id)">Delete</button></td>
+                    <td class="data2"><button
+                            style="background-color:rgb(78, 62, 186) ;margin-left:10px; border :0px; color : white; width:60px; border-radius : 5px"
+                            (click)="onEditProduct(Products.id)">Edit</button></td>
+                    <!-- <td><button
+                                style="background-color:green; border :0px; color : white; width:130px; border-radius : 5px"
+                                routerLink="/body/product/{{Products.id}}">Show
+                                Details</button></td> -->
+                </div>
+            </tr>
+        </table> <br>
+        <input class="fletch" type="submit" value="Fetch products" >
+        <input class="clear" type="submit" value="Clear All products" (click)="onDeleteAllProduct()">
+    </div>
+</div>
